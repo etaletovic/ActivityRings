@@ -14,39 +14,32 @@ struct ContentView: View {
         
         VStack {
             ZStack {
-                
                 Color.black.edgesIgnoringSafeArea(.all)
                 
                 ActivityRingView(
-                    outlineColor: .outlineRed,
+                    progress: $progress, outlineColor: .outlineRed,
                     darkColor: .darkRed,
                     lightColor: .lightRed,
-                    image: Image(systemName: "arrow.right"),
-                    progress: $progress)
+                    image: Image(systemName: "arrow.right"))
                     .frame(height: 238)
                 
                 ActivityRingView(
-                    outlineColor: .outlineGreen,
+                    progress: $progress, outlineColor: .outlineGreen,
                     darkColor: .darkGreen,
                     lightColor: .lightGreen,
-                    image: Image(systemName: "chevron.right.2"),
-                    progress: $progress
-                    
-                )
+                    image: Image(systemName: "chevron.right.2"))
                     .frame(height: 174)
                 
                 ActivityRingView(
-                    outlineColor: .outlineBlue,
+                    progress: $progress, outlineColor: .outlineBlue,
                     darkColor: .darkBlue,
                     lightColor: .lightBlue,
-                    image: Image(systemName: "arrow.up"),
-                    progress: $progress)
+                    image: Image(systemName: "arrow.up"))
                     .frame(height: 110)
             }
+            
             Slider(value: $progress, in: 0...7, step: 0.01)
         }
-        
-        
     }
 }
 

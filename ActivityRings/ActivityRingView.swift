@@ -10,31 +10,18 @@ import Foundation
 import SwiftUI
 
 struct ActivityRingView: View {
-    
-    private let ringWidth: CGFloat = 30
-    
-    private var colors : [Color] {
-        [darkColor, lightColor]
-    }
+
+    @Binding var progress: CGFloat
+
     var outlineColor: Color = .outlineRed;
     var darkColor: Color = .darkRed;
     var lightColor: Color = .lightRed;
     var image: Image? = nil;
-    
-    @Binding var progress: CGFloat
-    
-    private var touching: Bool {
-        progress > 0.95
-    }
-    
-    private var fullCircle: Bool {
-        progress >= 1
-    }
-    
+    var ringWidth: CGFloat = 30
+
     var body: some View {
         GeometryReader { (geometry: GeometryProxy) in
             ZStack {
-
                 Circle()
                     .stroke(self.outlineColor, lineWidth: self.ringWidth)
                 Circle()
@@ -86,8 +73,18 @@ struct ActivityRingView: View {
             }
             .frame(idealWidth: 300, idealHeight:300, alignment: .center)
         }
-        
-        
     }
-}
+    
+    private var colors : [Color] {
+        [darkColor, lightColor]
+    }
+    
+    private var touching: Bool {
+        progress > 0.95
+    }
+    
+    private var fullCircle: Bool {
+        progress >= 1
+    }
 
+}
